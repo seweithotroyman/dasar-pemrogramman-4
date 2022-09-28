@@ -63,9 +63,10 @@ Sebuah projek aplikasi dibangun menggunakan pemrograman Python. Aplikasi ini dap
 17. Di dalam perulangan `while`, jika pengguna memilih menu `4`, maka keluar dari perulangan `while`.
 
 ```python
-from pretytable import PrettyTable
+from prettytable import PrettyTable
 
 mahasiswa = []
+
 
 def tambah_mahasiswa(nim, nama, email):
     mahasiswa_baru = {
@@ -75,11 +76,30 @@ def tambah_mahasiswa(nim, nama, email):
     }
     mahasiswa.append(mahasiswa_baru)
 
+
 def cari_mahasiswa(nim):
     for mhs in mahasiswa:
         if mhs["nim"] == nim:
             return mhs
     return None
+
+
+def edit_mahasiswa(nim, nama, email):
+    for mhs in mahasiswa:
+        if mhs["nim"] == nim:
+            mhs["nama"] = nama
+            mhs["email"] = email
+            return True
+    return None
+
+
+def hapus_mahasiswa(nim):
+    for mhs in mahasiswa:
+        if mhs["nim"] == nim:
+            mahasiswa.remove(mhs)
+            return True
+    return False
+
 
 # tampilkan data mahasiswa menggunakan prettytables
 def tampilkan_mahasiswa():
@@ -89,13 +109,16 @@ def tampilkan_mahasiswa():
         table.add_row([mhs["nim"], mhs["nama"], mhs["email"]])
     print(table)
 
+
 def main():
     while True:
         print("=== Aplikasi Data Mahasiswa ===")
         print("1. Tambah Data Mahasiswa")
         print("2. Cari Data Mahasiswa")
         print("3. Tampilkan Data Mahasiswa")
-        print("4. Keluar")
+        print("4. Edit Data Mahasiswa")
+        print("5. Hapus Data Mahasiswa")
+        print("6. Keluar")
         pilihan = input("Pilih menu> ")
 
         # clear screen
@@ -107,6 +130,7 @@ def main():
             nama = input("Nama: ")
             email = input("Email: ")
             tambah_mahasiswa(nim, nama, email)
+            
         elif pilihan == "2":
             print("=== Cari Data Mahasiswa ===")
             nim = input("NIM: ")
@@ -121,11 +145,33 @@ def main():
         elif pilihan == "3":
             print("=== Tampilkan Data Mahasiswa ===")
             tampilkan_mahasiswa()
+            
         elif pilihan == "4":
+            print("=== Edit Data Mahasiswa ===")
+            nim = input("NIM : ")
+            cari_data = cari_mahasiswa(nim)
+            if cari_data:
+                nama = input("Input nama baru : ")
+                email = input("Input email baru: ")
+                if edit_mahasiswa(nim, nama, email):
+                    print("Data berhasil diubah")
+                    
+        elif pilihan == "5":
+            print("=== Hapus Data Mahasiswa ===")
+            nim = input("NIM : ")
+            if hapus_mahasiswa(nim):
+                print("Data berhasil dihapus")
+            else:
+                print("Data tidak ditemukan")
+                
+        elif pilihan == "6":
             break
+            
         else:
             print("Menu tidak tersedia")
+
 
 if __name__ == "__main__":
     main()
 ```
+
