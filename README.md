@@ -13,6 +13,16 @@
 **PROGRAM STUDI TEKNIK INFORMATIKA JURUSAN TEKNIK ELEKTRO POLITEKNIK NEGERI SEMARANG - 2022**
 
 #### Daftar Isi
+* [BAB I. Landasan Teori](#bab-i-landasan-teori)
+* [BAB II. List](#bab-ii-list)
+* [BAB III. Tuple](#bab-iii-tuple)
+* [BAB IV. Kegunaan List dan Tuple](#bab-iv-kegunaan-list-dan-tuple)
+* [BAB V. Praktikum](#bab-v-praktikum)
+  * [Alat dan Bahan](#alat-dan-bahan)
+  * [Challenge 1 & 2](#challenge-1--2)
+  * [Challenge 3](#challenge-3)
+  * [Challenge 4](#challenge-4)
+  * [Challenge 5](#challenge-5)
 
 #### BAB I. Landasan Teori
 Di dalam bahasa pemrograman Python, terdapat dua tipe data yang dapat digunakan untuk menyimpan kumpulan data, yaitu list dan tuple. Keduanya dapat menyimpan kumpulan data, baik itu berupa angka, string, maupun tipe data lainnya. Perbedaan utama dari kedua tipe data tersebut adalah list bersifat mutable, sedangkan tuple bersifat immutable. Dalam bab ini, akan dibahas mengenai list dan tuple, serta perbedaan dan kegunaan dari kedua tipe data tersebut.
@@ -41,7 +51,7 @@ List dan tuple memiliki kegunaan yang berbeda. List bersifat mutable, artinya da
 - PyCharm `2021.2.3`
 - Git `2.33.0`
 
-##### Langkah Kerja
+##### Challenge 1 & 2
 Sebuah projek aplikasi dibangun menggunakan pemrograman Python. Aplikasi ini dapat menyimpan dan mencari data mahasiswa berupa NIM, Nama, dan Email. Objek yang digunakan untuk menampung data adalah List. Aplikasi juga dapat menampilkan semua data.
 
 1. Buat sebuah projek baru dengan nama `job-sheet-4` menggunakan PyCharm.
@@ -50,18 +60,18 @@ Sebuah projek aplikasi dibangun menggunakan pemrograman Python. Aplikasi ini dap
 4. Buat sebuah fungsi dengan nama `tambah_mahasiswa` yang menerima parameter `nim`, `nama`, dan `email`. Fungsi ini akan menambahkan data mahasiswa ke dalam list `mahasiswa`.
 5. Buat sebuah fungsi dengan nama `cari_mahasiswa` yang menerima parameter `nim`. Fungsi ini akan mencari data mahasiswa berdasarkan NIM yang dimasukkan oleh pengguna. Jika data ditemukan, maka fungsi ini akan mengembalikan data mahasiswa tersebut. Jika data tidak ditemukan, maka fungsi ini akan mengembalikan `None`.
 6. Buat sebuah fungsi dengan nama `tampilkan_mahasiswa` yang tidak menerima parameter.
-7. Buat sebuah fungsi dengan nama `main` yang tidak menerima parameter.
-8. Di dalam fungsi `main`, buat sebuah perulangan `while` yang akan berjalan selama `True`.
-9. Di dalam perulangan `while`, tampilkan menu aplikasi.
-10. Di dalam perulangan `while`, minta pengguna untuk memasukkan pilihan menu.
-11. Di dalam perulangan `while`, jika pengguna memilih menu `1`, maka minta pengguna untuk memasukkan NIM, Nama, dan Email.
-12. Di dalam perulangan `while`, jika pengguna memilih menu `1`, maka panggil fungsi `tambah_mahasiswa` dengan parameter NIM, Nama, dan Email yang dimasukkan oleh pengguna.
-13. Di dalam perulangan `while`, jika pengguna memilih menu `2`, maka minta pengguna untuk memasukkan NIM.
-14. Di dalam perulangan `while`, jika pengguna memilih menu `2`, maka panggil fungsi `cari_mahasiswa` dengan parameter NIM yang dimasukkan oleh pengguna.
-15. Di dalam perulangan `while`, jika pengguna memilih menu `2`, maka tampilkan data mahasiswa yang dikembalikan oleh fungsi `cari_mahasiswa`.
-16. Di dalam perulangan `while`, jika pengguna memilih menu `3`, maka panggil fungsi `tampilkan_mahasiswa`.
-17. Di dalam perulangan `while`, jika pengguna memilih menu `4`, maka keluar dari perulangan `while`.
-
+7. Buat sebuah fungsi dengan nama `edit_mahasiswa` yang menerima parameter `nim`, `nama`, dan `email`. Fungsi ini akan mencari data mahasiswa berdasarkan NIM yang dimasukkan oleh pengguna. Jika data ditemukan, maka fungsi ini akan mengubah data mahasiswa tersebut. Jika data tidak ditemukan, maka fungsi ini akan menampilkan pesan `Data mahasiswa tidak ditemukan`.
+8. Buat sebuah fungsi dengan nama `hapus_mahasiswa` yang menerima parameter `nim`. Fungsi ini akan mencari data mahasiswa berdasarkan NIM yang dimasukkan oleh pengguna. Jika data ditemukan, maka fungsi ini akan menghapus data mahasiswa tersebut. Jika data tidak ditemukan, maka fungsi ini akan menampilkan pesan `Data mahasiswa tidak ditemukan`.
+9. Buat sebuah perulangan while yang akan berjalan selama True.
+10. Di dalam perulangan while, tampilkan menu aplikasi.
+11. Buat sebuah variabel dengan nama `pilihan` yang menyimpan input dari pengguna.
+12. Buat sebuah kondisi if dengan kondisi `pilihan == 1`. Jika kondisi tersebut bernilai True, maka panggil fungsi `tambah_mahasiswa`.
+13. Buat sebuah kondisi elif dengan kondisi `pilihan == 2`. Jika kondisi tersebut bernilai True, maka panggil fungsi `cari_mahasiswa`.
+14. Buat sebuah kondisi elif dengan kondisi `pilihan == 3`. Jika kondisi tersebut bernilai True, maka panggil fungsi `tampilkan_mahasiswa`.
+15. Buat sebuah kondisi elif dengan kondisi `pilihan == 4`. Jika kondisi tersebut bernilai True, maka panggil fungsi `edit_mahasiswa`.
+16. Buat sebuah kondisi elif dengan kondisi `pilihan == 5`. Jika kondisi tersebut bernilai True, maka panggil fungsi `hapus_mahasiswa`.
+17. Buat sebuah kondisi elif dengan kondisi `pilihan == 6`. Jika kondisi tersebut bernilai True, maka keluar dari perulangan while.
+18. Buat sebuah kondisi else. Jika kondisi tersebut bernilai True, maka tampilkan pesan `Pilihan tidak ditemukan`.
 ```python
 from prettytable import PrettyTable
 
@@ -174,4 +184,209 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+##### Challenge 3
+Seorang developer diberi tugas untuk membuat penjumlahan, pengurangan, dan perkalian matriks dua dimensi menggunakan List. Program ditampilkan dalam 4 menu matriks : Penjumlahan, Pengurangan, Perkalian, dan Keluar. Data matrik dimasukan oleh pengguna. Pada bagian akhir, program menampilkan hasil operasi matriks.
 
+```python
+import os
+import sys
+import time
+import numpy as np
+
+
+def clear():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+
+def menu():
+    print("=== Aplikasi Operasi Matriks ===")
+    print("1. Penjumlahan")
+    print("2. Pengurangan")
+    print("3. Perkalian")
+    print("4. Keluar")
+    pilihan = input("Pilih menu> ")
+    return pilihan
+
+
+def input_matriks():
+    baris = int(input("Masukkan jumlah baris: "))
+    kolom = int(input("Masukkan jumlah kolom: "))
+    matriks = []
+    for i in range(baris):
+        row = []
+        for j in range(kolom):
+            row.append(int(input(f"Masukkan nilai matriks ({i + 1}, {j + 1}): ")))
+        matriks.append(row)
+    return matriks
+
+
+def penjumlahan():
+    print("=== Penjumlahan Matriks ===")
+    print("Matriks A")
+    matriks_a = input_matriks()
+    print("Matriks B")
+    matriks_b = input_matriks()
+    matriks_c = np.add(matriks_a, matriks_b)
+    print("Hasil Penjumlahan")
+    print(matriks_c)
+    time.sleep(3)
+    clear()
+    return menu()
+
+
+def pengurangan():
+    print("=== Pengurangan Matriks ===")
+    print("Matriks A")
+    matriks_a = input_matriks()
+    print("Matriks B")
+    matriks_b = input_matriks()
+    matriks_c = np.subtract(matriks_a, matriks_b)
+    print("Hasil Pengurangan")
+    print(matriks_c)
+    time.sleep(3)
+    clear()
+    return menu()
+
+
+def perkalian():
+    print("=== Perkalian Matriks ===")
+    print("Matriks A")
+    matriks_a = input_matriks()
+    print("Matriks B")
+    matriks_b = input_matriks()
+    matriks_c = np.dot(matriks_a, matriks_b)
+    print("Hasil Perkalian")
+    print(matriks_c)
+    time.sleep(3)
+    clear()
+    return menu()
+
+
+def main():
+    while True:
+        pilihan = menu()
+        if pilihan == "1":
+            penjumlahan()
+        elif pilihan == "2":
+            pengurangan()
+        elif pilihan == "3":
+            perkalian()
+        elif pilihan == "4":
+            sys.exit()
+        else:
+            print("Pilihan tidak tersedia")
+            time.sleep(3)
+            clear()
+            continue
+
+main()
+```
+
+##### Challenge 4
+Sebagai seorang developer anda diberi tugas untuk membuat aplikasi prediksi harga pada handphone dengan kamera 9 MP dan 5 MP (H4 dan H6) menggunakan algoritma regresi linier.
+
+| Handphone | Kamera (MP) | Harga (Jutaan) |
+|-----------|-------------|----------------|
+| H1        | 8           | 7              |
+| H2        | 2           | 3              |
+| H3        | 6           | 7              |
+| H4        | 9           | x              |
+| H5        | 4           | 2              |
+| H6        | 5           | x              |
+| H7        | 7           | 8              |
+| H8        | 3           | 3              |
+
+Buatlah program untuk memprediksi harga handphone H4 dan H6 dengan menggunakan metode linear regression.
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+def linear_regression(x, y):
+    n = np.size(x)
+    m_x, m_y = np.mean(x), np.mean(y)
+    SS_xy = np.sum(y * x) - n * m_y * m_x
+    SS_xx = np.sum(x * x) - n * m_x * m_x
+    b_1 = SS_xy / SS_xx
+    b_0 = m_y - b_1 * m_x
+    return (b_0, b_1)
+
+
+def plot_regression_line(x, y, b):
+    plt.scatter(x, y, color="m", marker="o", s=30)
+    y_pred = b[0] + b[1] * x
+    plt.plot(x, y_pred, color="g")
+    plt.xlabel("Kamera (MP)")
+    plt.ylabel("Harga (Jutaan)")
+    plt.show()
+
+
+def main():
+    x = np.array([8, 2, 6, 9, 4, 5, 7, 3])
+    y = np.array([7, 3, 7, 0, 2, 0, 8, 3])
+    b = linear_regression(x, y)
+    print("Nilai b0 = ", b[0])
+    print("Nilai b1 = ", b[1])
+    plot_regression_line(x, y, b)
+    print("Prediksi harga H4 = ", b[0] + b[1] * 9)
+    print("Prediksi harga H6 = ", b[0] + b[1] * 5)
+```
+![](images/Screen Shot 2022-09-28 at 18.17.15.png)
+##### Challenge 5
+Seorang developer diberi tugas untuk membuat aplikasi prediksi harga handphone dengan dua variabel independent (x) dan satu variabel dependent atau (y) dengan data sebagai berikut:
+
+| Handphone | Baterai | Kamera (MP) | Harga (Jutaan) |
+|-----------|---------|-------------|----------------|
+| H1        | 21      | 8           | 7              |
+| H2        | 16      | 2           | 3              |
+| H3        | 17      | 6           | 7              |
+| H4        | 14      | 9           | x              |
+| H5        | 20      | 4           | 2              |
+| H6        | 24      | 5           | x              |
+| H7        | 22      | 7           | 8              |
+| H8        | 18      | 3           | 3              |
+
+Buatlah program untuk memprediksi harga handphone H4 dan H6 dengan menggunakan metode linear regression.
+
+```python
+import numpy as np
+from sklearn.linear_model import LinearRegression
+
+# data training
+x = np.array([[21, 8], [16, 2], [17, 6], [14, 9], [20, 4], [24, 5], [22, 7], [18, 3]])
+y = np.array([7, 3, 7, 0, 2, 0, 8, 3])
+x.shape = (8, 2)
+y.shape = (8, 1)
+
+# inisialisasi model
+model = LinearRegression()
+
+# training model
+model.fit(x, y)
+
+# prediksi harga H4 dan H6
+print("Prediksi harga H4 = ", model.predict([[14, 9]]))
+print("Prediksi harga H6 = ", model.predict([[24, 5]]))
+
+# tampikan grafik 3d
+import matplotlib.pyplot as plt
+
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+ax.scatter(x[:, 0], x[:, 1], y, c='r', marker='o')
+
+x_surf = np.arange(0, 30, 1)
+y_surf = np.arange(0, 10, 1)
+x_surf, y_surf = np.meshgrid(x_surf, y_surf)
+exog = np.array([x_surf.ravel(), y_surf.ravel()]).T
+out = model.predict(exog)
+ax.plot_surface(x_surf, y_surf, out.reshape(x_surf.shape), color='None', alpha=0.4)
+ax.set_xlabel('Baterai')
+ax.set_ylabel('Kamera')
+ax.set_zlabel('Harga')
+plt.show()
+```
+Grafik 3D dari data training dan hasil prediksi harga handphone H4 dan H6
+![](images/grafik_3d_14_9.png)
+![](images/gif-challenge5.gif)
