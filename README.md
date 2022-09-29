@@ -111,7 +111,6 @@ def hapus_mahasiswa(nim):
     return False
 
 
-# tampilkan data mahasiswa menggunakan prettytables
 def tampilkan_mahasiswa():
     table = PrettyTable()
     table.field_names = ["NIM", "Nama", "Email"]
@@ -190,7 +189,6 @@ Seorang developer diberi tugas untuk membuat penjumlahan, pengurangan, dan perka
 ```python
 import os
 import sys
-import time
 import numpy as np
 
 
@@ -229,7 +227,6 @@ def penjumlahan():
     matriks_c = np.add(matriks_a, matriks_b)
     print("Hasil Penjumlahan")
     print(matriks_c)
-    time.sleep(3)
     clear()
     return menu()
 
@@ -243,7 +240,6 @@ def pengurangan():
     matriks_c = np.subtract(matriks_a, matriks_b)
     print("Hasil Pengurangan")
     print(matriks_c)
-    time.sleep(3)
     clear()
     return menu()
 
@@ -257,7 +253,6 @@ def perkalian():
     matriks_c = np.dot(matriks_a, matriks_b)
     print("Hasil Perkalian")
     print(matriks_c)
-    time.sleep(3)
     clear()
     return menu()
 
@@ -275,11 +270,12 @@ def main():
             sys.exit()
         else:
             print("Pilihan tidak tersedia")
-            time.sleep(3)
             clear()
             continue
 
+
 main()
+
 ```
 
 ##### Challenge 4
@@ -358,6 +354,8 @@ print("""
 
 <img src="images/Screen Shot 2022-09-29 at 12.24.33.png"/>
 
+Dari hasil prediksi di atas, dapat disimpulkan bahwa harga handphone H4 dan H6 adalah `8.8` jutaan dan `5.0` jutaan.
+
 ##### Challenge 5
 Seorang developer diberi tugas untuk membuat aplikasi prediksi harga handphone dengan dua variabel independent (x) dan satu variabel dependent atau (y) dengan data sebagai berikut:
 
@@ -378,40 +376,27 @@ Buatlah program untuk memprediksi harga handphone H4 dan H6 dengan menggunakan m
 import numpy as np
 from sklearn.linear_model import LinearRegression
 
-# data training
-x = np.array([[21, 8], [16, 2], [17, 6], [14, 9], [20, 4], [24, 5], [22, 7], [18, 3]])
-y = np.array([7, 3, 7, 0, 2, 0, 8, 3])
-x.shape = (8, 2)
-y.shape = (8, 1)
+# x1 = baterai
+# x2 = kamera
+# y = harga
 
-# inisialisasi model
-model = LinearRegression()
+x1 = np.array([21, 16, 17, 20, 22, 18])
+x2 = np.array([8, 2, 6, 4, 7, 3])
+y = np.array([7, 3, 7, 2, 8, 3])
 
-# training model
-model.fit(x, y)
+# hitung regresi linear berganda menggunakan scikit-learn
+regresi = LinearRegression()
+model = regresi.fit(np.column_stack([x1, x2]), y)
 
+print("Persamaan regresi linear berganda menggunakan scikit-learn:")
 # prediksi harga H4 dan H6
-print("Prediksi harga H4 = ", model.predict([[14, 9]]))
-print("Prediksi harga H6 = ", model.predict([[24, 5]]))
-
-# tampikan grafik 3d
-import matplotlib.pyplot as plt
-
-fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
-ax.scatter(x[:, 0], x[:, 1], y, c='r', marker='o')
-
-x_surf = np.arange(0, 30, 1)
-y_surf = np.arange(0, 10, 1)
-x_surf, y_surf = np.meshgrid(x_surf, y_surf)
-exog = np.array([x_surf.ravel(), y_surf.ravel()]).T
-out = model.predict(exog)
-ax.plot_surface(x_surf, y_surf, out.reshape(x_surf.shape), color='None', alpha=0.4)
-ax.set_xlabel('Baterai')
-ax.set_ylabel('Kamera')
-ax.set_zlabel('Harga')
-plt.show()
+print("Prediksi harga H4 dengan rumus {} + {} * 14 + {} * 9 adalah {}".format(model.intercept_, model.coef_[0], model.coef_[1], model.intercept_ + model.coef_[0]*14 + model.coef_[1]*9))
+print("Prediksi harga H6 dengan rumus {} + {} * 24 + {} * 5 adalah {}".format(model.intercept_, model.coef_[0], model.coef_[1], model.intercept_ + model.coef_[0]*24 + model.coef_[1]*5))
 ```
-Grafik 3D dari data training dan hasil prediksi harga handphone H4 dan H6
-![](images/grafik_3d_14_9.png)
-![](images/gif-challenge5.gif)
+<img src="images/Screen Shot 2022-09-30 at 06.05.22.png"/>
+Dari hasil prediksi di atas, dapat disimpulkan bahwa harga handphone H4 dan H6 adalah `11.8` jutaan dan `3.0` jutaan.
+<br>
+Berikut adalah grafik dari hasil prediksi di atas:
+
+<img src="images/grafik_3d_14_9.png"/>
+<img src="images/gif-challenge5.gif"/>
