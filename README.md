@@ -334,6 +334,7 @@ def main():
 ```
 
 <img src="images/Screen Shot 2022-09-28 at 18.17.15.png"/>
+
 ##### Challenge 5
 Seorang developer diberi tugas untuk membuat aplikasi prediksi harga handphone dengan dua variabel independent (x) dan satu variabel dependent atau (y) dengan data sebagai berikut:
 
