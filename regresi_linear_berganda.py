@@ -21,10 +21,17 @@ print("sigma_x1x2 = ", np.sum(x1*x2))
 print("sigma_x1y = ", np.sum(x1*y))
 print("sigma_x2y = ", np.sum(x2*y))
 
+sigma_x1_2 = np.sum(x1**2) - (np.sum(x1)**2 / len(x1))
+sigma_x2_2 = np.sum(x2**2) - (np.sum(x2)**2 / len(x2))
+sigma_y_2 = np.sum(y**2) - (np.sum(y)**2 / len(y))
+sigma_x1_y = np.sum(x1*y) - (np.sum(x1)*np.sum(y)) / len(y)
+sigma_x2_y = np.sum(x2*y) - (np.sum(x2)*np.sum(y)) / len(y)
+sigma_x1_x2 = np.sum(x1*x2) - (np.sum(x1)*np.sum(x2)) / len(y)
+
 # hitung a, b1, b2 data
-b1 = np.sum(x1*y) * np.sum(x2**2) - np.sum(x1*x2) * np.sum(x2*y) / (np.sum(x1**2) * np.sum(x2**2) - np.sum(x1*x2)**2)
-b2 = np.sum(x1**2) * np.sum(x2*y) - np.sum(x1*x2) * np.sum(x1*y) / (np.sum(x1**2) * np.sum(x2**2) - np.sum(x1*x2)**2)
-a = (np.sum(y) - b1 * np.sum(x1) - b2 * np.sum(x2)) / len(x1)
+b1 = (sigma_x2_2*sigma_x1_y - sigma_x2_y*sigma_x1_x2) / (sigma_x1_2*sigma_x2_2 - sigma_x1_x2**2)
+b2 = (sigma_x1_2*sigma_x2_y - sigma_x1_y*sigma_x1_x2) / (sigma_x1_2*sigma_x2_2 - sigma_x1_x2**2)
+a = (np.sum(y) - (b1*np.sum(x1)) - (b2*np.sum(x2))) / len(y)
 
 # prediksi harga H4 dan H6
 print("Prediksi harga H4 dengan rumus {} + {} * 14 + {} * 9 adalah {}".format(a, b1, b2, a + b1*14 + b2*9))
